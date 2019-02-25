@@ -1,0 +1,24 @@
+﻿@model MovieProject.ViewModels.MovieFormatViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<main class="main-content">
+    <div class="container">
+        <h2>Create Movie Format</h2>
+
+        @using (Html.BeginForm("Index", "MovieFormat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.FormatType, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.FormatType, new { @class = "form-control-file", @placeholder = "Format Type", @type = "file", @accept = "image/*" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Add</button>
+            </div>
+        }
+
+    </div>
+
+</main>
+

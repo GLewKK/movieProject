@@ -1,0 +1,74 @@
+﻿@using System.Web.Mvc.Html
+@model MovieProject.ViewModels.MovieViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        @using (Html.BeginForm("Create", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "", @placeholder = "Enter Name" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TrailerLink, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.TrailerLink, new { @class = "", @placeholder = "Enter Trailer Link" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PremiereDate, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.PremiereDate, "{0:dd/MM/yyyy HH:mm}", new { @class = "", @placeholder = "Enter Premiere Date", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.ClasificationId, new { @class = "control-label" })
+                @Html.DropDownListFor(x => x.ClasificationId, Model.Clasification.Select(x => new SelectListItem { Text = x.Title, Value = x.Id.ToString() }), "Select Clasification", new {@class = "selectpicker" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Lenght_min, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Lenght_min, new { @class = "", @placeholder = "Enter Lenght min" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Description, new { @class = "", @placeholder = "Enter Description" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.MovieFormatId, new { @class = "control-label" })
+                @Html.DropDownListFor(x => x.MovieFormatId, Model.MovieFormats.Select(x => new SelectListItem { Text = x.FormatType, Value = x.Id.ToString() }), "Select Clasification")
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.File, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.File, new { @class = "form-control-file", @placeholder = "Format Type", @type = "file", @accept = "image/*" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Add</button>
+            </div>
+            <select class="selectpicker" multiple data-live-search="true">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+            </select>
+        }
+    </div>
+
+</div>
+<h2>Create</h2>
+<script type="text/javascript" src="~/Scripts/bootstrap-select.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-select.css" />
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.selectpicker').selectpicker();
+        $(document).ready(function () {
+            $('.selectpicker').selectpicker();
+        });
+</script>
+
+

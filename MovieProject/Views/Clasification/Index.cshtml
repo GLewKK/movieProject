@@ -1,0 +1,24 @@
+﻿@model MovieProject.ViewModels.ClasificationViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<main class="main-content">
+    <div class="container">
+        <h2>Create Clasification</h2>
+
+        @using (Html.BeginForm("Index", "Clasification", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Title, new { @class = "", @placeholder = "Title" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Add</button>
+            </div>
+        }
+
+    </div>
+
+</main>
+
